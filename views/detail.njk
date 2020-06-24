@@ -1,0 +1,15 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+    <h1>{{dado.name}}</h1>
+    <img src="{{dado.url}}"/>
+    <p>
+        <strong>{{dado.title}}</strong>
+        {{dado.description}}</p>
+
+    <a href="{{dado.href}}">
+        INSCREVA-SE AQUI
+        <a>
+
+        {% endblock content %}

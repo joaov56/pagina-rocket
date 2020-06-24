@@ -36,17 +36,20 @@ server.get("/projects", function (req, res) {
 server.get("/cursos", function (res, res) {
   const data = [
     {
+      id: "starter",
       url: "https://skylab.rocketseat.com.br/static/media/Starter.64c237cc.svg",
       title: "Torne--se um programador desejado",
       description: "no mercado com esses cursos gratuitos",
     },
     {
+      id: "launchbase",
       url:
         "https://skylab.rocketseat.com.br/static/media/LaunchBase.08285320.svg",
       title: "Domine programação do zero",
       description: "e tenha acesso às melhores oportunidades do mercado",
     },
     {
+      id: "gostack",
       url: "https://skylab.rocketseat.com.br/static/media/GoStack.83a178a0.svg",
       title: "Treinamento imersivo",
       description:
@@ -55,6 +58,69 @@ server.get("/cursos", function (res, res) {
   ];
 
   return res.render("cursos", { dados: data });
+});
+
+server.get("/video", (req, res) => {
+  const id = req.query.id;
+  const video = videos.find(function (video) {
+    if (video.id == id) {
+      return true;
+    }
+  });
+
+  if (!video) {
+    return res.render("not-found.njk");
+  }
+
+  return res.render("video", { item: video });
+});
+
+server.get("/courses", (req, res) => {
+  const id = req.query.id;
+
+  const data = [
+    {
+      id: "starter",
+      name: "STARTER",
+      url: "https://skylab.rocketseat.com.br/static/media/Starter.64c237cc.svg",
+      href: "https://skylab.rocketseat.com.br/journey/starter",
+      title: "Torne--se um programador desejado",
+      description: "no mercado com esses cursos gratuitos",
+    },
+    {
+      id: "starter",
+      name: "Launchbase",
+      url:
+        "https://skylab.rocketseat.com.br/static/media/LaunchBase.08285320.svg",
+
+      href: "https://skylab.rocketseat.com.br/dashboard/launchbase",
+
+      title: "Domine programação do zero",
+      description: "e tenha acesso às melhores oportunidades do mercado",
+    },
+    {
+      id: "starter",
+      name: "Gostack",
+      url: "https://skylab.rocketseat.com.br/static/media/GoStack.83a178a0.svg",
+      href: "https://rocketseat.com.br/gostack",
+      title: "Treinamento imersivo",
+      description:
+        "nas tecnologias mais modernas de desenvolvimento web e mobile",
+    },
+  ];
+
+  let ok = 0;
+  if (id === "starter") {
+    ok = 0;
+  }
+  if (id === "launchbase") {
+    ok = 1;
+  }
+  if (id === "gostack") {
+    ok = 2;
+  }
+
+  return res.render("detail", { dado: data[ok] });
 });
 
 server.use(function (req, res) {

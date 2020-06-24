@@ -1,20 +1,19 @@
 const modalOverlay = document.querySelector(".modal-overlay");
 const cards = document.querySelectorAll(".card");
 const close = document.querySelector(".close-modal");
+const cursos = document.querySelectorAll(".card_curso");
 
+for (let curso of cursos) {
+  curso.addEventListener("click", function () {
+    const id = curso.getAttribute("id");
+    window.location.href = `/courses?id=${id}`;
+  });
+}
 for (let card of cards) {
   card.addEventListener("click", function () {
     const videoid = card.getAttribute("id");
-    modalOverlay.classList.add("active");
-    modalOverlay.querySelector(
-      "iframe"
-    ).src = `https://www.youtube.com/embed/${videoid}`;
+    window.location.href = `/video?id=${videoid}`;
   });
 }
-
-close.addEventListener("click", function () {
-  modalOverlay.classList.remove("active");
-  modalOverlay.querySelector("iframe").src = "";
-});
 
 const iframe = modalOverlay.querySelector("iframe");

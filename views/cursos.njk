@@ -1,0 +1,18 @@
+{% extends "layout.njk" %}
+
+{% block content%}
+
+    <div class="cards_curso">
+
+        {% for dado in dados %}
+            <div class="card_curso">
+                <img src="{{dado.url}}"/>
+                <p>
+                    <strong>{{dado.title}}</strong>
+                    {{dado.description}}</p>
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

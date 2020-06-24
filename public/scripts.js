@@ -6,7 +6,7 @@ const cursos = document.querySelectorAll(".card_curso");
 for (let curso of cursos) {
   curso.addEventListener("click", function () {
     const id = curso.getAttribute("id");
-    window.location.href = `/courses?id=${id}`;
+    window.location.href = `/courses/${id}`;
   });
 }
 for (let card of cards) {

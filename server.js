@@ -75,8 +75,8 @@ server.get("/video", (req, res) => {
   return res.render("video", { item: video });
 });
 
-server.get("/courses", (req, res) => {
-  const id = req.query.id;
+server.get("/courses/:id", (req, res) => {
+  const id = req.params.id;
 
   const data = [
     {

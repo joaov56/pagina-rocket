@@ -168,12 +168,17 @@ iframe {
 
 .card_curso {
   margin: 0 auto;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.3);
   height: 600px;
   border: 2px solid white;
 
   border-radius: 8px;
-  opacity: 0.4;
+  cursor: pointer;
+  transition: 500ms color;
+}
+
+.card_curso:hover {
+  border: 2px solid var(--color-rocket);
 }
 
 .card_curso img {
